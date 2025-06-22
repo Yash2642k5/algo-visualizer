@@ -19,12 +19,14 @@ function Algorithms() {
           Visualize and understand algorithms of your choice through our visualizers!
         </p>
         </div>
-        <div className='mt-16 flex flex-col sm:flex-row gap-4 items-center justify-center'>
+        <div className='flex mt-16 justify-center'>
+                    <div className='grid auto-cols-max grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 items-center justify-center w-max'>
           {
             features.map(({title, description, relativePath})=>{
               return <AlgorithmInfoCard title={title.toUpperCase()} description={description.toUpperCase()} relativePath={relativePath} key={title}/>
-})
+        })
           }
+        </div>
         </div>
       </div>
     </div>
