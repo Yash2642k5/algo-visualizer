@@ -4,6 +4,7 @@ import { isEqual } from '../../../utils/isEqual'
 import { destroyWall } from '../../../utils/destroyWall'
 import { getRandomInt } from '../../../utils/getRandomInt'
 import { MAX_COLS, MAX_ROWS } from '../../../utils/constants'
+import { resetGrid } from '../../../utils/resetGrid'
 export const binaryTree = async (
     grid,
     startTile,
@@ -11,6 +12,7 @@ export const binaryTree = async (
     setIsDisabled,
     speed,
 ) => {
+    resetGrid({grid: grid.slice(), startTile, endTile})
     createWall(startTile, endTile, speed)
     await sleep(MAX_ROWS * MAX_COLS)
 

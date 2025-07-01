@@ -6,7 +6,7 @@ function MazeGeneratorSelect(
         onChange,
         options,
         label,
-        isDisabled=false,
+        isDisabled,
     }
 ) {
 

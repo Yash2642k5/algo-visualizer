@@ -35,13 +35,14 @@ function NavBar({isVisualizationRunningRef}) {
 
         const newGrid = grid.slice()
         setGrid(newGrid)
-        setIsGraphVisualized(false)
+        setMaze('NONE')
     }
 
     const handlerRunVisualizer = () => {
         if(isGraphVisualized) {
             setIsGraphVisualized(false)
             resetGrid({grid: grid.slice(), startTile, endTile})
+            setIsDisabled(false)
             return 
         }
 
@@ -59,7 +60,6 @@ function NavBar({isVisualizationRunningRef}) {
             const newGrid = grid.slice()
             setGrid(newGrid)
             setIsGraphVisualized(true)
-            setIsDisabled(false)
             isVisualizationRunningRef.current = false
 
         }, SLEEP_TIME * (traversedTiles.length + SLEEP_TIME * 2) + EXTENDED_SLEEP_TIME * (path.length + 60) * SPEEDS.find((s) => s.value === speed).value)
@@ -76,6 +76,7 @@ function NavBar({isVisualizationRunningRef}) {
                 label={'Maze'}
                 value={maze}
                 options={MAZES}
+                isDisabled={isDisabled}
                 onChange={(e) => {
                     handleGenerateMaze(e.target.value)
                 }}
@@ -84,6 +85,7 @@ function NavBar({isVisualizationRunningRef}) {
                 label={'Graph'}
                 value={algorithm}
                 options={PATHFINDING_ALGORITHMS}
+                isDisabled={isDisabled}
                 onChange={(e) => {
                     setAlgorithm(e.target.value)
                 }}
@@ -92,13 +94,15 @@ function NavBar({isVisualizationRunningRef}) {
                 label={'Speed'}
                 value={speed}
                 options={SPEEDS}
+                isDisabled={isDisabled}
                 onChange={(e) => {
                     setSpeed(parseFloat(e.target.value))
                 }}
                 />
                 <PlayButton
-                isDisabled={isDisabled}
+                isDisabled={isVisualizationRunningRef.current}
                 isGraphVisualized={isGraphVisualized}
+                setIsGraphVisualized={setIsGraphVisualized}
                 handleRunVisualizer={handlerRunVisualizer}
                 />
             </div>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import menuLogo from '../../assets/menu-svgrepo-com.svg'
 import companyLogo from '../../assets/algovisualizer.png'
 import { NavLink } from 'react-router-dom'
 import { ImCross } from "react-icons/im";
