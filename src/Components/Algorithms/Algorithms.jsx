@@ -7,6 +7,11 @@ const features = [
     description: 'Visualize pathfinding algorithms and either custom made mazes or using binary tree approach ',
     relativePath: '/algorithms/pathfinding'
   },
+  {
+    title: 'Recursive algorithms',
+    description: 'Visualize Recursive algorithms and either factorial or fibonacci ',
+    relativePath: '/algorithms/recursive'
+  },
 ]
 
 function Algorithms() {

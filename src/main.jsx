@@ -8,6 +8,8 @@ import About from './Components/About/About';
 import Algorithms from './Components/Algorithms/Algorithms';
 import Contact from './Components/Contact/Contact';
 import PathFindAlgoMain from './Components/Algorithms/PathFindAlgorithms/PathFindAlgoMain';
+import RecursiveAlgoMain from './Components/Algorithms/recursive/RecursiveMain'
+import { loader as keyLoader } from './Components/Contact/Contact'
 
 const router = createBrowserRouter([
   {
@@ -29,13 +31,18 @@ const router = createBrowserRouter([
       },
       {
         path: 'contact',
-        element:<Contact/>
+        element:<Contact/>,
+        loader: keyLoader 
       }
     ]
   },
   {
         path: '/algorithms/pathfinding',
         element: <PathFindAlgoMain/>
+  },
+  {
+        path: '/algorithms/recursive',
+        element: <RecursiveAlgoMain/>
   },
 
 ])

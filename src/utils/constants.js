@@ -72,3 +72,13 @@ export const SPEEDS = [
 
 export const SLEEP_TIME = 8
 export const EXTENDED_SLEEP_TIME = 30
+
+
+export const ResursiveAlgo = [
+    {
+        name: 'Fibonacci' , value: 'fib'
+    },
+    {
+        name: 'Factorial', value: 'fact'
+    }
+]
