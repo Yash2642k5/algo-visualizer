@@ -1,17 +1,41 @@
 import React from 'react'
 import { useState, useEffect } from "react";
+import { useLoaderData } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import useWeb3Forms from "@web3forms/react";
 
-    export default function Contact() {
+export const loader = async () => {
+    try {
+        const response = await fetch('http://localhost:5000/get_contact_key', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.statusText}`);
+        }
+
+        const jsonKey = await response.json();
+
+        const accessKey = jsonKey.key;
+    
+        return { accessKey }; 
+    } catch (error) {
+        console.error('Error in loader:', error);
+        throw error; 
+    }
+};
+
+
+export default function Contact() {
 
     const {register, reset, handleSubmit} = useForm();
 
     const [isSuccess, setIsSuccess] = useState(false);
     const [result, setResult] = useState(null);
 
-    const accessKey = import.meta.env.VITE_WEB3_API_KEY;
-
+    const { accessKey } = useLoaderData() 
 
     const { submit: onSubmit } = useWeb3Forms({
     access_key: accessKey,
