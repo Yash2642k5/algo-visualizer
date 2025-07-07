@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+@import "tailwindcss";
+
+@theme{
+    --font-dmsans: "DM Sans", sans-serif;
+    --animate-fade-in: fade-in 1s ease-in-out;
+    --animate-wall: wall 1s ease-in-out;
+    --animate-traversed: traversed 1s ease-in-out;
+    --animate-path: path 1s ease-in-out;
+
+    @keyframes fade-in {
+    from {
+        opacity: 1;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+        @keyframes wall {
+        0% {
+            transform: "scale(0.7)"
+        },
+        100% {
+            transform: "scale(1)"
+        }
+        
+    }
+
+        @keyframes traversed {
+            0% {
+                transform: scale(0.3);
+                background-color: #9333eabf;
+                border-radius: 100%;
+            }
+            50% {
+                background-color: #4f46e5bf;
+            }
+            75% {
+                transform: scale(1.2);
+                background-color: #3b82f6bf;
+            }
+            100% {
+                transform: scale(1);
+                background-color: #22d3ee;
+            }
+        }
+
+                @keyframes path {
+            0% {
+                transform: scale(0.3);
+                background-color: #e11d48bf;
+                border-radius: 100%;
+            }
+            50% {
+                background-color: #ea580cbf;
+            }
+            75% {
+                transform: scale(1.2);
+                background-color: #fb923cbf;
+            }
+            90% {
+                transform: scale(0.8);
+                background-color: #fde68a;
+            }
+            100% {
+                transform: scale(1); 
+            }
+        }
+
+
+}
+
+#menu {
+    filter: invert(100%) sepia(100%) saturate(400%) hue-rotate(180deg);
+}
