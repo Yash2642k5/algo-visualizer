@@ -20,7 +20,7 @@ app.post('/api/:algo', async (req, res) => {
     const response = await fetch(`https://recursionvisualizer.onrender.com/${algo}?n=${n}`, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${process.env.RECURSION_API_KEY}`,
+        Authorization: `Bearer abc123`,
       },
     });
 
