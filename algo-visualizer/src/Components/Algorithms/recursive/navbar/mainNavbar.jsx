@@ -1,6 +1,6 @@
 // NavBar.jsx
 import React, { useState } from 'react';
-import AlgoSelect from './AlgoSelect';
+import AlgoSelect from './algoSelect';
 import JSZip from 'jszip';
 
 const RecursiveAlgos = [
