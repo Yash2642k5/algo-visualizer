@@ -9,6 +9,8 @@ const app = express();
 const PORT = 5000;
 
 app.use(express.static(path.join(__dirname, 'public')));
+// Serve static files from the Vite build output
+app.use(express.static(path.join(__dirname, '../algo-visualizer/dist')));
 
 app.use(cors()); // Allow frontend to call backend
 app.use(express.json()); // Parse JSON requests
@@ -55,6 +57,10 @@ try {
   console.error('Wildcard route error:', e);
 }
 
+// Catch-all route to serve index.html for React Router
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../algo-visualizer/dist', 'index.html'));
+});
 
 app.use((err, req, res, next) => {
   console.error('Unhandled error:', err);
