@@ -8,7 +8,6 @@ require('dotenv').config();
 const app = express();
 const PORT = 5000;
 
-app.use(express.static(path.join(__dirname, 'public')));
 // Serve static files from the Vite build output
 app.use(express.static(path.join(__dirname, '../algo-visualizer/dist')));
 
@@ -48,14 +47,6 @@ app.get('/get_contact_key',(req,res) => {
     res.status(500).json({ error: 'Something went wrong' });
   }
 })
-
-try {
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  });
-} catch (e) {
-  console.error('Wildcard route error:', e);
-}
 
 // Catch-all route to serve index.html for React Router
 app.get('*', (req, res) => {
