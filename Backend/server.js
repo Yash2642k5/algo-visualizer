@@ -50,7 +50,7 @@ app.get('/get_contact_key',(req,res) => {
 })
 
 try {
-  app.get((req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 } catch (e) {
