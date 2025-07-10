@@ -8,8 +8,7 @@ require('dotenv').config();
 const app = express();
 const PORT = 5000;
 
-// Serve static files from the Vite build output
-app.use(express.static(path.join(__dirname, '../algo-visualizer/dist')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors()); // Allow frontend to call backend
 app.use(express.json()); // Parse JSON requests
@@ -18,7 +17,7 @@ app.post('/api/:algo', async (req, res) => {
   const { algo } = req.params;
   const { n } = req.query;
   try {
-    const response = await fetch(`https://recursionvisualizer.onrender.com/${algo}?n=${n}`, {
+    const response = await fetch(`https://recursionvisualizer-1.onrender.com/${algo}?n=${n}`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer abc123`,
@@ -48,10 +47,14 @@ app.get('/get_contact_key',(req,res) => {
   }
 })
 
-// Catch-all route to serve index.html for React Router
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../algo-visualizer/dist', 'index.html'));
-});
+try {
+  app.get((req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  });
+} catch (e) {
+  console.error('Wildcard route error:', e);
+}
+
 
 app.use((err, req, res, next) => {
   console.error('Unhandled error:', err);
