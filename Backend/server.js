@@ -7,6 +7,7 @@ require('dotenv').config();
 
 const app = express();
 const PORT = 5000;
+const api_pass = "abc123";
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -17,10 +18,10 @@ app.post('/api/:algo', async (req, res) => {
   const { algo } = req.params;
   const { n } = req.query;
   try {
-    const response = await fetch(`https://recursionvisualizer-1.onrender.com/${algo}?n=${n}`, {
+    const response = await fetch(`http://34.131.174.31:8080/${algo}?n=${n}`, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer abc123`,
+        Authorization: `Bearer ${api_pass}`,
       },
     });
 
