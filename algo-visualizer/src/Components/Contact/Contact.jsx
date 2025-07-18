@@ -6,7 +6,7 @@ import useWeb3Forms from "@web3forms/react";
 
 export const loader = async () => {
     try {
-        const response = await fetch('/get_contact_key', {
+        const response = await fetch('http://34.131.174.31:8000/get_contact_key', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

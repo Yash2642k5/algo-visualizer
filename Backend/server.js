@@ -2,14 +2,11 @@
 const express = require('express');
 const fetch = require('node-fetch');
 const cors = require('cors');
-const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const PORT = 5000;
-const api_pass = "abc123";
-
-app.use(express.static(path.join(__dirname, 'public')));
+const PORT = 8000;
+const api_pass = process.env.RECURSION_API_KEY;
 
 app.use(cors()); // Allow frontend to call backend
 app.use(express.json()); // Parse JSON requests
@@ -47,15 +44,6 @@ app.get('/get_contact_key',(req,res) => {
     res.status(500).json({ error: 'Something went wrong' });
   }
 })
-
-try {
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-  });
-} catch (e) {
-  console.error('Wildcard route error:', e);
-}
-
 
 app.use((err, req, res, next) => {
   console.error('Unhandled error:', err);
