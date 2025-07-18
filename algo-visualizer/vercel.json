@@ -1,5 +1,16 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    "rewrites": [
+    {
+      "source": "/get_contact_key/:match*",
+      "destination": "http://34.131.174.31:8000/get_contact_key/:match*"
+    },
+    {
+      "source": "/api/:algo/:match*",
+      "destination": "http://34.131.174.31:8000/api/:algo/:match*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
