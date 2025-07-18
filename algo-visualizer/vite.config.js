@@ -8,7 +8,7 @@ export default defineConfig({
         tailwindcss(),
         react(),
   ],
-  // build: {
-  //   outDir: '../Backend/public'
-  // }
+  build: {
+    outDir: 'public'
+  }
 })
