@@ -7,6 +7,7 @@ require('dotenv').config();
 const app = express();
 const PORT = 8000;
 const api_pass = process.env.RECURSION_API_KEY;
+const router = express.Router();
 
 app.use(cors()); // Allow frontend to call backend
 app.use(express.json()); // Parse JSON requests
@@ -34,7 +35,7 @@ app.post('/api/:algo', async (req, res) => {
   }
 });
 
-app.get('/get_contact_key',(req,res) => {
+app.post('/get_contact_key',async (req,res) => {
   try{
     const keys = process.env.VITE_WEB3_API_KEY;
     const jsonKey = { key : keys};
@@ -43,7 +44,8 @@ app.get('/get_contact_key',(req,res) => {
     console.error(err)
     res.status(500).json({ error: 'Something went wrong' });
   }
-})
+});
+
 
 app.use((err, req, res, next) => {
   console.error('Unhandled error:', err);

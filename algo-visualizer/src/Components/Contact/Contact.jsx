@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData,Form } from 'react-router-dom'
 import { useForm } from "react-hook-form";
 import useWeb3Forms from "@web3forms/react";
 
@@ -26,6 +26,7 @@ export const loader = async () => {
         throw error; 
     }
 };
+
 
 
 export default function Contact() {
@@ -141,9 +142,7 @@ export default function Contact() {
                             </div>
                         </div>
 
-                        <form className="p-6 flex flex-col justify-center" onSubmit={
-                            handleSubmit(onSubmit)
-                        }>
+                        <form  className="p-6 flex flex-col justify-center" >
                             <div className="flex flex-col">
                                 <label htmlFor="name" className="hidden">
                                     Full Name

@@ -33,6 +33,7 @@ const router = createBrowserRouter([
         path: 'contact',
         element:<Contact/>,
         loader: keyLoader 
+        // action: keyAction
       }
     ]
   },
