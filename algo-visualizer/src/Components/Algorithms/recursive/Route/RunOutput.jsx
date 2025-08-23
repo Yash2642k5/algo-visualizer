@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-function RunOutput({ algo, n, urls }) {
+function RunOutput({ algo, n, urls, isPlayButtonPressed}) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const intervalRef = useRef(null);
 
+  if (isPlayButtonPressed.current === true)
+  {
+    isPlayButtonPressed.current = false;
+    setCurrentIndex(0);
+  }
   const total = urls.length;
-  const current = urls[currentIndex];
-
+  const current = urls[currentIndex] || urls[0] || {};
   const handleNext = () => {
     if (currentIndex < total - 1) setCurrentIndex(currentIndex + 1);
   };
@@ -52,8 +56,8 @@ function RunOutput({ algo, n, urls }) {
         {/* Image Frame */}
         <div className="relative w-full max-w-[500px] h-[400px] border rounded shadow-lg bg-white flex items-center justify-center">
           <img
-            src={current.url}
-            alt={current.name}
+            src={current.url || ''}
+            alt={current.name || 'Frame'}
             className="max-w-full max-h-full object-contain"
           />
           <div className="absolute top-2 right-2 text-sm bg-white/80 px-2 py-1 rounded">

@@ -8,7 +8,7 @@ const RecursiveAlgos = [
   { name: 'Factorial', value: 'factorial' },
 ];
 
-function NavBar({ onRun }) {
+function NavBar({ onRun, isPlayButtonPressed }) {
   const [selectedAlgo, setSelectedAlgo] = useState('fibonacci');
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
@@ -24,7 +24,7 @@ function NavBar({ onRun }) {
       alert('Please provide n between 0 and 7');
       return;
     }
-
+    isPlayButtonPressed.current = true;
     setLoading(true);
 
     try {
@@ -52,7 +52,7 @@ function NavBar({ onRun }) {
       onRun({ algo: selectedAlgo, n, urls });
 
     } catch (err) {
-      alert('Something went wrong');
+      alert('Something went wrong, see console log');
       console.error(err);
     } finally {
       setLoading(false);
