@@ -9,6 +9,7 @@ import Algorithms from './Components/Algorithms/Algorithms';
 import Contact from './Components/Contact/Contact';
 import PathFindAlgoMain from './Components/Algorithms/PathFindAlgorithms/PathFindAlgoMain';
 import RecursiveAlgoMain from './Components/Algorithms/recursive/RecursiveMain'
+import NotFound from './Components/NotFound/NotFound'
 import { loader as keyLoader } from './Components/Contact/Contact'
 
 const router = createBrowserRouter([
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
         path: 'contact',
         element:<Contact/>,
         loader: keyLoader 
-      }
+      },
+        {
+          path: '*',
+          element: <NotFound/>
+        }
     ]
   },
   {
