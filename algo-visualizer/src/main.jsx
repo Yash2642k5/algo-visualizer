@@ -39,6 +39,8 @@ const router = createBrowserRouter([
           path: '*',
           element: <NotFound/>
         }
+        // action: keyAction
+      }
     ]
   },
   {
