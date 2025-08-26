@@ -40,7 +40,6 @@ const router = createBrowserRouter([
           element: <NotFound/>
         }
         // action: keyAction
-      }
     ]
   },
   {
